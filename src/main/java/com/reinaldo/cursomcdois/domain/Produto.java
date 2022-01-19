@@ -13,6 +13,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 public class Produto implements Serializable{
 
@@ -27,6 +29,8 @@ public class Produto implements Serializable{
 	//Na relação Muitos Para Muitos, será criado uma terceira tabela com os ids das duas tabelas
 	//Dessa forma, name é o nome da tabela, joinColumns é a chave estrangeira correspondente de produto
 	//inverseJoinColumns: nome da outra chave estrangeira que referencia categoria
+	
+	@JsonBackReference 	//não irá buscar a referência desse lado, apenas onde está a anotação JsonManagedReference
 	@ManyToMany
 	@JoinTable(name = "PRODUTO_CATEGORIA",
 		joinColumns = @JoinColumn(name = "produto_id"),
