@@ -1,6 +1,7 @@
 package com.reinaldo.cursomcdois;
 
 import java.util.Arrays;
+import java.util.Scanner;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -43,6 +44,8 @@ public class CursomcdoisApplication implements CommandLineRunner{
 
 	@Override
 	public void run(String... args) throws Exception {
+		Scanner sc = new Scanner(System.in);
+		
 		Categoria cat1 = new Categoria(null, "Informática");
 		Categoria cat2 = new Categoria(null, "Escritório");
 		
