@@ -2,8 +2,11 @@ package com.reinaldo.cursomcdois.domain;
 
 import java.util.Date;
 
+import javax.persistence.Entity;
+
 import com.reinaldo.cursomcdois.domain.enums.EstadoPagamento;
 
+@Entity
 public class PagamentoComBoleto extends Pagamento{
 
 	private static final long serialVersionUID = 1L;
