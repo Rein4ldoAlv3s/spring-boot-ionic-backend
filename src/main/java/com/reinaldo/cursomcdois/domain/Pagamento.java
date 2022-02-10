@@ -1,18 +1,28 @@
 package com.reinaldo.cursomcdois.domain;
 
 import java.io.Serializable;
-import java.util.Date;
 import java.util.Objects;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.MapsId;
+import javax.persistence.OneToOne;
 
 import com.reinaldo.cursomcdois.domain.enums.EstadoPagamento;
 
+@Entity
 public class Pagamento implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 
+	@Id
 	private Integer id;
 	private EstadoPagamento estado;
 	
+	@OneToOne
+	@JoinColumn(name="pedido_id")
+	@MapsId
 	private Pedido pedido;
 	
 	public Pagamento() {
