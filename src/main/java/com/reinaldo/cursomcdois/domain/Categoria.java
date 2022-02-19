@@ -1,4 +1,4 @@
-package com.reinaldo.cursomcdois.domain;
+ package com.reinaldo.cursomcdois.domain;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -11,8 +11,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-
 @Entity
 public class Categoria implements Serializable{
 
@@ -24,7 +22,7 @@ public class Categoria implements Serializable{
 	private String nome;
 	
 	//Resolver problema de serialização
-	@JsonManagedReference //irá serializar apenas desse lado, os objetos associados vao vir por aqui  
+	 //irá serializar apenas desse lado, os objetos associados vao vir por aqui  
 	@ManyToMany(mappedBy = "categorias")
 	private List<Produto> produtos = new ArrayList<>();
 	
