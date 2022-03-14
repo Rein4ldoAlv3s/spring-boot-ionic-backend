@@ -60,7 +60,6 @@ public class ClienteService {
 		} catch (DataIntegrityViolationException e) {
 			throw new DataIntegrityException("Não é possível excluir uma categoria que não possui produtos"); 
 		}
-		repo.deleteById(id);
 	}
 	
 	public List<Cliente> findAll(){
