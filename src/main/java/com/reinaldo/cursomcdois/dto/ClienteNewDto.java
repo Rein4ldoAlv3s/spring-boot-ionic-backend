@@ -2,6 +2,9 @@ package com.reinaldo.cursomcdois.dto;
 
 import java.io.Serializable;
 
+import com.reinaldo.cursomcdois.services.validation.ClienteInsert;
+
+@ClienteInsert
 public class ClienteNewDto implements Serializable{
 
 	private static final long serialVersionUID = 1L;
