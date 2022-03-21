@@ -1,19 +1,20 @@
 package com.reinaldo.cursomcdois.resources;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import org.hibernate.validator.constraints.URL;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.reinaldo.cursomcdois.domain.Categoria;
 import com.reinaldo.cursomcdois.domain.Produto;
+import com.reinaldo.cursomcdois.dto.CategoriaDTO;
 import com.reinaldo.cursomcdois.dto.ProdutoDTO;
 import com.reinaldo.cursomcdois.services.ProdutoService;
 
@@ -30,17 +31,16 @@ public class ProdutoResource {
 		return ResponseEntity.ok().body(obj);
 	}
 	
-	@GetMapping
+	@GetMapping()
 	public ResponseEntity<Page<ProdutoDTO>> findPage(
-			@RequestParam(value="nome", defaultValue="") String nome, 
-			@RequestParam(value="categorias", defaultValue="") String categorias, 
-			@RequestParam(value="page", defaultValue="0") Integer page, 
-			@RequestParam(value="linesPerPage", defaultValue="24") Integer linesPerPage, 
-			@RequestParam(value="orderBy", defaultValue="nome") String orderBy, 
-			@RequestParam(value="direction", defaultValue="ASC") String direction) {
-		
-		Page<Produto> list = service.search(nomeDecoded, ids, page, linesPerPage, orderBy, direction);
-		Page<ProdutoDTO> listDto = list.map(obj -> new ProdutoDTO(obj));  
+			@RequestParam(value ="nome", defaultValue = "") Integer nome, 
+			@RequestParam(value ="categorias", defaultValue = "") Integer categorias, 
+			@RequestParam(value ="page", defaultValue = "0") Integer page, 
+			@RequestParam(value ="linesPerPage", defaultValue = "24") Integer linesPerPage, 
+			@RequestParam(value ="orderBy", defaultValue = "nome") String orderBy, 
+			@RequestParam(value ="direction", defaultValue = "ASC") String direction) {
+		Page<Produto> list = service.search(page, linesPerPage, orderBy, direction);
+		Page<CategoriaDTO> listDto = list.map(obj -> new CategoriaDTO(obj));
 		return ResponseEntity.ok().body(listDto);
 	}
 }

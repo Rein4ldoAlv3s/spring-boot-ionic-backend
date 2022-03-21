@@ -11,7 +11,7 @@ public class ProdutoDTO implements Serializable{
 	private Double preco;
 	
 	public ProdutoDTO() {
-		super();
+		
 	}
 
 	public Integer getId() {
@@ -37,9 +37,6 @@ public class ProdutoDTO implements Serializable{
 	public void setPreco(Double preco) {
 		this.preco = preco;
 	}
-	
-	
-	
 	
 	
 }
