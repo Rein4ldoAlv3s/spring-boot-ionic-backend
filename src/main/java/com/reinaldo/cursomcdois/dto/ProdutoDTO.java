@@ -2,6 +2,8 @@ package com.reinaldo.cursomcdois.dto;
 
 import java.io.Serializable;
 
+import com.reinaldo.cursomcdois.domain.Produto;
+
 public class ProdutoDTO implements Serializable{
 
 	private static final long serialVersionUID = 1L;
@@ -12,6 +14,11 @@ public class ProdutoDTO implements Serializable{
 	
 	public ProdutoDTO() {
 		
+	}
+	public ProdutoDTO(Produto obj) {
+		id = obj.getId();
+		nome = obj.getNome();
+		preco = obj.getPreco();
 	}
 
 	public Integer getId() {
